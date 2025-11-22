@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Madu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="card">
+        <div id="message-container">
+            <p id="message-text">
+                Oi, madu!<br>
+                Quis deixar algo pequeno pra alegrar o seu dia.<br>
+                Nada grandioso, só um jeito tranquilo de lembrar que você passa pela minha cabeça mais vezes do que você pensa. 
+            </p>
+        </div>
+        <button id="next-btn">Próxima mensagem</button>
+    </div>
+
+    <!-- Marca d'água -->
+    <div class="watermark">Feito pelo Siqueira :D</div>
+
+    <script>
+        const messages = [
+            "Oi, madu!<br>Quis deixar algo pequeno pra alegrar o seu dia.<br>Nada grandioso, só um jeito tranquilo de lembrar que você passa pela minha cabeça mais vezes do que você pensa. ",
+            "Se chegou até aqui, é só pra te dizer que você tem um jeitinho único de deixar tudo mais leve.<br>É impressionante como detalhes simples do seu dia ficam na minha memória. ",
+            "Bom, só queria dizer que mesmo quando eu te irrito ou te estresso, você sempre consegue aparecer na minha cabeça de um jeito especial, esse é meu jeito de mostrar carinho, espero ter arrancado pelo menos um sorriso com tudo isso."
+        ];
+
+        let current = 0;
+
+        const messageText = document.getElementById("message-text");
+        const nextBtn = document.getElementById("next-btn");
+
+        nextBtn.addEventListener("click", () => {
+            current = (current + 1) % messages.length;
+            messageText.innerHTML = messages[current];
+        });
+    </script>
+</body>
+</html>

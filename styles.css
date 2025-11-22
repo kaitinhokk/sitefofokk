@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f2ed;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    position: relative;
+}
+
+.card {
+    background: #ffffff;
+    padding: 50px 55px;
+    max-width: 520px;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+#message-text {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 30px;
+    font-family: "Inter", sans-serif;
+}
+
+#next-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ffd080, #ffb347);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#next-btn:hover {
+    background: linear-gradient(135deg, #ffb347, #ff9c00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Marca d'água */
+.watermark {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(0,0,0,0.15);
+    font-family: "Inter", sans-serif;
+    pointer-events: none;
+}
+
+/* Animação fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
