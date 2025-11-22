@@ -1,44 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentinho</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentinho
+  </title>
+
+  <meta name="description" content="Uma carta delicada que acompanha flores, feita com carinho especial." />
+  <meta property="og:title" content="Uma carta especial" />
+  <meta property="og:description" content="Uma carta delicada para acompanhar flores." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fff5f7; /* tom floral suave */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: white;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1s ease;
+    }
+
+    /* Moldura floral discreta */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      background: radial-gradient(circle, rgba(212,75,136,0.08) 0%, rgba(255,245,247,0) 70%); /* padrão floral leve */
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      color: #d44b88;
+      margin-bottom: 20px;
+    }
+
+    #message {
+      font-size: 1.2rem;
+      color: #444;
+      min-height: 120px;
+      opacity: 0;
+      transition: opacity .6s ease;
+      white-space: pre-line;
+    }
+
+    button {
+      background: #e86da0;
+      border: none;
+      color: white;
+      padding: 12px 22px;
+      font-size: 1rem;
+      border-radius: 30px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #d95795;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div id="message-container">
-            <p id="message-text">
-                Oi, madu!<br>
-                Quis deixar algo pequeno pra alegrar o seu dia.<br>
-                Nada grandioso, só um jeito tranquilo de lembrar que você passa pela minha cabeça mais vezes do que você pensa. 
-            </p>
-        </div>
-        <button id="next-btn">Próxima mensagem</button>
-    </div>
+  <div class="card">
+    <h1>Uma mensagem que acompanha suas flores 🌸</h1>
+    <div id="message"></div>
+    <button id="next-btn" aria-label="Próxima mensagem">Próxima</button>
+  </div>
 
-    <!-- Marca d'água -->
-    <div class="watermark">Feito pelo Siqueira :D</div>
+  <script>
+    const messages = [
+      "Oi, madu! Quis deixar algo pequeno pra alegrar o seu dia. Nada grandioso, só um jeito tranquilo de lembrar que você passa pela minha cabeça mais vezes do que você pensa.",
+      "Se chegou até aqui, é só pra te dizer que você tem um jeitinho único de deixar tudo mais leve. É impressionante como detalhes simples do seu dia ficam na minha memória.",
+      "Bom, só queria dizer que mesmo quando eu te irrito ou te estresso, você sempre consegue aparecer na minha cabeça de um jeito especial, esse é meu jeito de mostrar carinho, espero ter arrancado pelo menos um sorriso com tudo isso."
+    ];
 
-    <script>
-        const messages = [
-            "Oi, madu!<br>Quis deixar algo pequeno pra alegrar o seu dia.<br>Nada grandioso, só um jeito tranquilo de lembrar que você passa pela minha cabeça mais vezes do que você pensa. ",
-            "Se chegou até aqui, é só pra te dizer que você tem um jeitinho único de deixar tudo mais leve.<br>É impressionante como detalhes simples do seu dia ficam na minha memória. ",
-            "Bom, só queria dizer que mesmo quando eu te irrito ou te estresso, você sempre consegue aparecer na minha cabeça de um jeito especial, esse é meu jeito de mostrar carinho, espero ter arrancado pelo menos um sorriso com tudo isso."
-        ];
+    let index = 0;
+    const messageEl = document.getElementById('message');
+    const btn = document.getElementById('next-btn');
 
-        let current = 0;
+    function showMessage() {
+      messageEl.style.opacity = 0;
+      setTimeout(() => {
+        messageEl.textContent = messages[index];
+        messageEl.style.opacity = 1;
+      }, 400);
+    }
 
-        const messageText = document.getElementById("message-text");
-        const nextBtn = document.getElementById("next-btn");
+    btn.addEventListener('click', () => {
+      index = (index + 1) % messages.length;
+      showMessage();
+    });
 
-        nextBtn.addEventListener("click", () => {
-            current = (current + 1) % messages.length;
-            messageText.innerHTML = messages[current];
-        });
-    </script>
+    showMessage();
+  </script>
+  <div style="position: fixed; bottom: 10px; width: 100%; text-align: center; font-size: 0.85rem; color: gray; opacity: 0.7; font-family: 'Georgia', serif;">feito pelo Siqueira :D</div>
 </body>
 </html>
-
